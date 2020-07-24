@@ -31,7 +31,7 @@ public class MessageController {
 	
 	@GetMapping("/all")
 	public ResponseEntity<List<MessageDto>> findAll(){
-		return new ResponseEntity(messageService.findAll(),HttpStatus.Ok);
+		return new ResponseEntity(messageService.findAll(), HttpStatus.OK);
 		
 	}
 	@PostMapping("/create")
