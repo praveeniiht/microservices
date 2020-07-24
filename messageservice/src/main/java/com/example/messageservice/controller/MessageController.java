@@ -30,22 +30,22 @@ public class MessageController {
 	}
 	
 	@GetMapping("/all")
-	public List<MessageDto> findAll(){
-		return messageService.findAll();
+	public ResponseEntity<List<MessageDto>> findAll(){
+		return new ResponseEntity(messageService.findAll(),HttpStatus.Ok);
 		
 	}
 	@PostMapping("/create")
-	public MessageDto addMessage(@RequestBody MessageDto message) {
-		return messageService.addMessage(message);
+	public ResponseEntity<MessageDto> addMessage(@RequestBody MessageDto message) {
+		return new ResponseEntity(messageService.addMessage(message), HttpStatus.CREATED);
 	}
 	@PostMapping("/update")
-	public MessageDto updateMessage(@RequestBody MessageDto message) {
-		return messageService.addMessage(message);
+	public ResponseEntity<MessageDto> updateMessage(@RequestBody MessageDto message) {
+		return new ResponseEntity(messageService.addMessage(message), HttpStatus.OK);
 	}
 	
 	@GetMapping("/getMessageTo/{messageTo}")
-	public List<MessageDto> findAllByMessageTo(@PathVariable("messageTo") String messageTo){
+	public ResponseEntity<List<MessageDto>> findAllByMessageTo(@PathVariable("messageTo") String messageTo){
 		
-		return messageService.findAllByMessageTo(messageTo);
+		return new ResponseEntity(messageService.findAllByMessageTo(messageTo), HttpStatus.OK);
 	}
 }
